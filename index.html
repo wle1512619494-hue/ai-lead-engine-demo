@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>AI Lead Engine — White-label Automation Demo</title>
+<meta name="description" content="A white-label lead automation demo: capture, AI qualification, CRM routing, follow-up, booking and reporting." />
+<style>
+:root{
+  --bg:#08111f;
+  --panel:#0f1b2d;
+  --panel2:#132239;
+  --text:#eaf1fb;
+  --muted:#90a4bf;
+  --line:#233653;
+  --good:#66d9a3;
+  --warn:#ffd166;
+  --bad:#ff7b7b;
+  --accent:#78a8ff;
+  --accent2:#a985ff;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:
+radial-gradient(1000px 500px at 12% -10%,rgba(120,168,255,.20),transparent 55%),
+radial-gradient(800px 420px at 90% 0%,rgba(169,133,255,.14),transparent 50%),
+var(--bg);color:var(--text)}
+a{color:inherit}
+.container{width:min(1160px,calc(100% - 32px));margin:auto}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0}
+.brand{font-weight:800;letter-spacing:.2px}.pill{padding:8px 12px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:13px}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center;padding:58px 0 42px}
+h1{font-size:clamp(42px,6vw,76px);line-height:.98;margin:0 0 20px;letter-spacing:-2.4px}
+.gradient{background:linear-gradient(90deg,#fff 10%,#86b3ff 55%,#c49dff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-size:18px;color:var(--muted);line-height:1.65;max-width:760px}
+.btns{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
+button,.btn{border:0;border-radius:12px;padding:13px 18px;font-weight:700;cursor:pointer;text-decoration:none}
+.primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#07101d}
+.secondary{background:transparent;color:var(--text);border:1px solid var(--line)}
+.card{background:linear-gradient(180deg,rgba(19,34,57,.94),rgba(15,27,45,.94));border:1px solid var(--line);border-radius:18px;box-shadow:0 20px 50px rgba(0,0,0,.22)}
+.hero-card{padding:22px}
+.kpi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.kpi{padding:18px;background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:14px}
+.kpi .v{font-size:30px;font-weight:800}.kpi .l{font-size:13px;color:var(--muted);margin-top:6px}
+.section{padding:44px 0}.section h2{font-size:34px;margin:0 0 10px}.section p.lead{color:var(--muted);max-width:760px;line-height:1.6}
+.flow{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:22px}
+.step{padding:16px 12px;text-align:center;border:1px solid var(--line);border-radius:14px;background:var(--panel)}
+.step b{display:block;margin-top:7px;font-size:14px}.step span{font-size:12px;color:var(--muted)}
+.demo{display:grid;grid-template-columns:.8fr 1.2fr;gap:18px;margin-top:24px}
+.form-card,.dash-card{padding:22px}
+label{display:block;font-size:13px;color:var(--muted);margin:13px 0 7px}
+input,select,textarea{width:100%;background:#0b1627;border:1px solid var(--line);color:var(--text);border-radius:10px;padding:11px 12px;outline:none}
+textarea{min-height:78px;resize:vertical}
+.submit{width:100%;margin-top:16px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#06101b}
+.timeline{margin-top:16px}
+.event{display:grid;grid-template-columns:20px 1fr;gap:10px;padding:9px 0}
+.dot{width:10px;height:10px;border-radius:50%;background:#39506e;margin-top:5px;box-shadow:0 0 0 5px rgba(120,168,255,.06)}
+.event.done .dot{background:var(--good)} .event.active .dot{background:var(--warn)}
+.event small{display:block;color:var(--muted);margin-top:3px}
+.table-wrap{overflow:auto;margin-top:18px;border:1px solid var(--line);border-radius:12px}
+table{width:100%;border-collapse:collapse;min-width:680px}
+th,td{padding:12px;text-align:left;border-bottom:1px solid var(--line);font-size:13px}
+th{color:var(--muted);font-weight:600;background:#0b1627}
+.badge{display:inline-flex;padding:5px 8px;border-radius:999px;font-size:12px;border:1px solid var(--line)}
+.hot{color:#ff9c9c;background:rgba(255,123,123,.08)} .warm{color:#ffd166;background:rgba(255,209,102,.08)} .cold{color:#8bb6ff;background:rgba(120,168,255,.08)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+.feature{padding:20px}.feature h3{margin:0 0 8px}.feature p{color:var(--muted);line-height:1.5;font-size:14px}
+.footer{padding:46px 0 60px;color:var(--muted);font-size:13px}
+.notice{margin-top:18px;padding:12px;border-radius:12px;background:rgba(102,217,163,.07);border:1px solid rgba(102,217,163,.22);color:#b9efd5;display:none}
+@media (max-width:900px){.hero,.demo{grid-template-columns:1fr}.flow{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:1fr}.hero{padding-top:32px}}
+</style>
+</head>
+<body>
+<div class="container">
+  <nav class="nav">
+    <div class="brand">AI Lead Engine</div>
+    <div class="pill">White-label automation demo</div>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <div class="pill" style="display:inline-block;margin-bottom:18px">For agencies & lead-driven businesses</div>
+      <h1 class="gradient">Turn leads into booked appointments automatically.</h1>
+      <p class="sub">Capture inbound leads, qualify them with AI, route them into CRM, trigger instant follow-up, book calls and expose the whole funnel in one client-facing dashboard.</p>
+      <div class="btns">
+        <a class="btn primary" href="#demo">Run the demo</a>
+        <a class="btn secondary" href="#workflow">See the workflow</a>
+      </div>
+    </div>
+    <div class="card hero-card">
+      <div class="kpi-grid">
+        <div class="kpi"><div class="v">31 sec</div><div class="l">Lead → first response</div></div>
+        <div class="kpi"><div class="v">84%</div><div class="l">Automated qualification</div></div>
+        <div class="kpi"><div class="v">12</div><div class="l">Booked appointments</div></div>
+        <div class="kpi"><div class="v">4.7×</div><div class="l">Pipeline visibility</div></div>
+      </div>
+      <p style="color:var(--muted);font-size:13px;margin:16px 2px 0">Illustrative demo metrics. Production implementations connect to the client's actual CRM, forms, calendars and messaging stack.</p>
+    </div>
+  </section>
+
+  <section class="section" id="workflow">
+    <h2>One flow, six jobs automated</h2>
+    <p class="lead">The product is the full conversion layer after marketing creates the lead — not another dashboard that still needs someone to do the work manually.</p>
+    <div class="flow">
+      <div class="step"><span>01</span><b>Capture</b></div>
+      <div class="step"><span>02</span><b>AI score</b></div>
+      <div class="step"><span>03</span><b>CRM route</b></div>
+      <div class="step"><span>04</span><b>Follow-up</b></div>
+      <div class="step"><span>05</span><b>Booking</b></div>
+      <div class="step"><span>06</span><b>Reporting</b></div>
+    </div>
+  </section>
+
+  <section class="section" id="demo">
+    <h2>Interactive lead demo</h2>
+    <p class="lead">Submit a sample lead. The dashboard simulates the production workflow an agency can white-label for its own clients.</p>
+
+    <div class="demo">
+      <div class="card form-card">
+        <h3 style="margin-top:0">New inbound lead</h3>
+        <label>Name</label><input id="name" value="Sarah Miller" />
+        <label>Service</label>
+        <select id="service"><option>HVAC replacement</option><option>Roofing estimate</option><option>MedSpa consultation</option><option>Real estate inquiry</option></select>
+        <label>Budget</label>
+        <select id="budget"><option value="high">$5,000+</option><option value="mid">$1,000–$5,000</option><option value="low">Under $1,000</option></select>
+        <label>Message</label><textarea id="message">Need a quote this week. Ready to schedule a call.</textarea>
+        <button class="submit" onclick="runDemo()">Process lead</button>
+        <div class="notice" id="notice">Lead processed. CRM + follow-up workflow simulated successfully.</div>
+      </div>
+
+      <div class="card dash-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+          <div><h3 style="margin:0">Automation timeline</h3><div style="color:var(--muted);font-size:13px;margin-top:5px">Live simulation</div></div>
+          <div class="badge warm" id="scoreBadge">Waiting</div>
+        </div>
+        <div class="timeline" id="timeline">
+          <div class="event"><div class="dot"></div><div>Lead captured<small>Website / ads / landing page</small></div></div>
+          <div class="event"><div class="dot"></div><div>AI qualification<small>Intent, urgency, budget and fit</small></div></div>
+          <div class="event"><div class="dot"></div><div>CRM routing<small>Contact + opportunity + source attribution</small></div></div>
+          <div class="event"><div class="dot"></div><div>Instant follow-up<small>Email / SMS / WhatsApp / call task</small></div></div>
+          <div class="event"><div class="dot"></div><div>Booking handoff<small>Calendar + owner notification</small></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Lead</th><th>Source</th><th>AI score</th><th>Status</th><th>Next action</th></tr></thead>
+        <tbody id="leadTable">
+          <tr><td>James R.</td><td>Google Ads</td><td><span class="badge hot">HOT · 92</span></td><td>Booked</td><td>Sales call today</td></tr>
+          <tr><td>Olivia T.</td><td>Meta Ads</td><td><span class="badge warm">WARM · 74</span></td><td>Follow-up</td><td>Email #2 in 4h</td></tr>
+          <tr><td>Daniel K.</td><td>Organic</td><td><span class="badge cold">COLD · 41</span></td><td>Nurture</td><td>7-day sequence</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Built for white-label delivery</h2>
+    <div class="grid3">
+      <div class="card feature"><h3>Agency-ready</h3><p>Your brand, your client, your offer. The automation layer can sit invisibly behind an agency's existing marketing services.</p></div>
+      <div class="card feature"><h3>Custom integrations</h3><p>Forms, CRMs, APIs, webhooks, databases, calendars, email, messaging and internal admin tools can be connected around the same flow.</p></div>
+      <div class="card feature"><h3>Recurring revenue</h3><p>Implementation fee + monthly monitoring/maintenance + optional workflow expansion creates a repeatable service rather than one-off dev work.</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="card" style="padding:28px">
+      <h2 style="margin-top:0">A practical pilot offer</h2>
+      <p class="lead">Start with one workflow for one client. Map the process, connect the stack, build logging and error handling, document the handoff, then decide whether to roll it out across more accounts.</p>
+      <div class="btns"><a class="btn primary" href="mailto:wle1512619494@gmail.com?subject=AI%20Lead%20Engine%20pilot">Discuss a pilot</a></div>
+    </div>
+  </section>
+
+  <footer class="footer">AI Lead Engine demo · Built for global agency partnerships</footer>
+</div>
+
+<script>
+function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
+async function runDemo(){
+  const events=[...document.querySelectorAll('.event')];
+  events.forEach(e=>e.className='event');
+  document.getElementById('notice').style.display='none';
+  const budget=document.getElementById('budget').value;
+  const msg=document.getElementById('message').value.toLowerCase();
+  let score=58;
+  if(budget==='high') score+=22;
+  if(budget==='mid') score+=11;
+  if(/week|today|ready|schedule|quote|call/.test(msg)) score+=13;
+  score=Math.min(98,score);
+  const badge=document.getElementById('scoreBadge');
+  badge.textContent='Processing...'; badge.className='badge warm';
+  for(let i=0;i<events.length;i++){
+    events[i].className='event active';
+    await sleep(420);
+    events[i].className='event done';
+  }
+  const cls=score>=85?'hot':score>=65?'warm':'cold';
+  const label=score>=85?'HOT':score>=65?'WARM':'COLD';
+  badge.textContent=`${label} · ${score}`; badge.className=`badge ${cls}`;
+  const name=document.getElementById('name').value || 'New lead';
+  document.getElementById('leadTable').insertAdjacentHTML('afterbegin',
+    `<tr><td>${escapeHtml(name)}</td><td>Demo form</td><td><span class="badge ${cls}">${label} · ${score}</span></td><td>${score>=85?'Sales-ready':'Follow-up'}</td><td>${score>=85?'Book consultation':'Automated sequence'}</td></tr>`);
+  document.getElementById('notice').style.display='block';
+}
+function escapeHtml(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+</script>
+</body>
+</html>
