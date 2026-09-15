@@ -1,8 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" translate="no">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="google" content="notranslate" />
 <title>LeadStack Ops — AI Lead Engine Demo</title>
 <meta name="description" content="LeadStack Ops white-label AI lead automation demo: capture, AI qualification, CRM routing, follow-up, booking and reporting." />
 <style>
@@ -49,8 +50,11 @@ button,.btn{border:0;border-radius:12px;padding:13px 18px;font-weight:700;cursor
 .form-card,.dash-card{padding:22px}
 label{display:block;font-size:13px;color:var(--muted);margin:13px 0 7px}
 input,select,textarea{width:100%;background:#0b1627;border:1px solid var(--line);color:var(--text);border-radius:10px;padding:11px 12px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:rgba(120,168,255,.72)}
+.field-invalid{border-color:var(--bad)!important;box-shadow:0 0 0 3px rgba(255,123,123,.08)}
 textarea{min-height:78px;resize:vertical}
 .submit{width:100%;margin-top:16px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#06101b}
+.submit:disabled{opacity:.7;cursor:wait}
 .timeline{margin-top:16px}
 .event{display:grid;grid-template-columns:20px 1fr;gap:10px;padding:9px 0}
 .dot{width:10px;height:10px;border-radius:50%;background:#39506e;margin-top:5px;box-shadow:0 0 0 5px rgba(120,168,255,.06)}
@@ -70,7 +74,7 @@ th{color:var(--muted);font-weight:600;background:#0b1627}
 .partner-note{margin-top:18px;padding:15px 16px;border:1px solid rgba(120,168,255,.28);background:rgba(120,168,255,.06);border-radius:12px;color:#c8daf8;line-height:1.55;font-size:14px}
 .pilot-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:18px;margin-top:22px}
 .pilot-copy,.pilot-form{padding:24px}.pilot-copy h3,.pilot-form h3{margin:0 0 10px}.pilot-copy p{color:var(--muted);line-height:1.65}.pilot-copy ul{margin:18px 0 0;padding-left:18px;color:var(--muted);line-height:1.8}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.form-grid .full{grid-column:1/-1}.pilot-form label{margin-top:0}.pilot-form textarea{min-height:110px}.form-meta{font-size:12px;color:var(--muted);line-height:1.5;margin-top:12px}.form-success{display:none;margin-top:18px;padding:14px 16px;border-radius:12px;background:rgba(102,217,163,.07);border:1px solid rgba(102,217,163,.22);color:#b9efd5;line-height:1.55}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.form-grid .full{grid-column:1/-1}.pilot-form label{margin-top:0}.pilot-form textarea{min-height:110px}.form-meta{font-size:12px;color:var(--muted);line-height:1.5;margin-top:12px}.form-success{display:none;margin-top:18px;padding:14px 16px;border-radius:12px;background:rgba(102,217,163,.07);border:1px solid rgba(102,217,163,.22);color:#b9efd5;line-height:1.55}.form-error{display:none;margin-top:14px;padding:12px 14px;border-radius:12px;background:rgba(255,123,123,.07);border:1px solid rgba(255,123,123,.25);color:#ffc0c0;line-height:1.5}
 .hp-field{position:absolute;left:-9999px;opacity:0;pointer-events:none}
 .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
 .contact-card{padding:20px;text-decoration:none;transition:transform .16s ease,border-color .16s ease}.contact-card:hover{transform:translateY(-2px);border-color:rgba(120,168,255,.52)}
@@ -80,7 +84,7 @@ th{color:var(--muted);font-weight:600;background:#0b1627}
 @media (max-width:900px){.hero,.demo,.partner-grid,.pilot-grid{grid-template-columns:1fr}.flow{grid-template-columns:repeat(2,1fr)}.grid3,.contact-grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.form-grid .full{grid-column:auto}.hero{padding-top:32px}}
 </style>
 </head>
-<body>
+<body class="notranslate">
 <div class="container">
   <nav class="nav">
     <div class="brand">LeadStack Ops</div>
@@ -125,7 +129,6 @@ th{color:var(--muted);font-weight:600;background:#0b1627}
   <section class="section" id="demo">
     <h2>Interactive lead demo</h2>
     <p class="lead">Submit a sample lead. The dashboard simulates the production workflow an agency can white-label for its own clients.</p>
-
     <div class="demo">
       <div class="card form-card">
         <h3 style="margin-top:0">New inbound lead</h3>
@@ -138,7 +141,6 @@ th{color:var(--muted);font-weight:600;background:#0b1627}
         <button class="submit" onclick="runDemo()">Process lead</button>
         <div class="notice" id="notice">Lead processed. CRM + follow-up workflow simulated successfully.</div>
       </div>
-
       <div class="card dash-card">
         <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
           <div><h3 style="margin:0">Automation timeline</h3><div style="color:var(--muted);font-size:13px;margin-top:5px">Live simulation</div></div>
@@ -153,7 +155,6 @@ th{color:var(--muted);font-weight:600;background:#0b1627}
         </div>
       </div>
     </div>
-
     <div class="table-wrap">
       <table>
         <thead><tr><th>Lead</th><th>Source</th><th>AI score</th><th>Status</th><th>Next action</th></tr></thead>
@@ -174,7 +175,6 @@ th{color:var(--muted);font-weight:600;background:#0b1627}
       <div class="card feature"><h3>Custom engineering when templates stop</h3><p>APIs, webhooks, CRM logic, dashboards, databases, booking flows and internal tools can be connected around the client's current stack.</p></div>
       <div class="card feature"><h3>Repeatable recurring delivery</h3><p>Start with one workflow, then reuse the core architecture across similar accounts with monitoring, maintenance and expansion as recurring work.</p></div>
     </div>
-
     <div class="partner-grid">
       <div class="card partner-card">
         <h3>What your client sees</h3>
@@ -202,7 +202,6 @@ th{color:var(--muted);font-weight:600;background:#0b1627}
   <section class="section" id="pilot-request">
     <h2>Start with one $499 pilot</h2>
     <p class="lead">One narrow workflow, one clear outcome, and no platform migration. If the pilot works, expand into recurring automation and white-label delivery.</p>
-
     <div class="pilot-grid">
       <div class="card pilot-copy">
         <h3>What the pilot covers</h3>
@@ -215,64 +214,31 @@ th{color:var(--muted);font-weight:600;background:#0b1627}
         </ul>
         <div class="partner-note">Pilot pricing starts at $499 for a fixed scope. Larger integrations and ongoing agency fulfillment are quoted separately.</div>
       </div>
-
       <div class="card pilot-form">
         <h3>Tell us about the workflow</h3>
-        <form name="pilot-request" method="POST" action="/?submitted=1#pilot-request" data-netlify="true" netlify-honeypot="company-website">
+        <form id="pilotForm" name="pilot-request" method="POST" action="/?submitted=1#pilot-request" data-netlify="true" netlify-honeypot="company-website" novalidate>
           <input type="hidden" name="form-name" value="pilot-request" />
-          <p class="hp-field">
-            <label>Leave this field empty <input name="company-website" autocomplete="off" tabindex="-1" /></label>
-          </p>
+          <p class="hp-field"><label>Leave this field empty <input name="company-website" autocomplete="off" tabindex="-1" /></label></p>
           <div class="form-grid">
-            <div>
-              <label for="pilot-name">Name</label>
-              <input id="pilot-name" name="name" autocomplete="name" required />
-            </div>
-            <div>
-              <label for="pilot-email">Work email</label>
-              <input id="pilot-email" name="email" type="email" autocomplete="email" required />
-            </div>
-            <div>
-              <label for="pilot-company">Company / agency</label>
-              <input id="pilot-company" name="company" autocomplete="organization" required />
-            </div>
-            <div>
-              <label for="pilot-website">Website</label>
-              <input id="pilot-website" name="website" type="url" placeholder="https://" inputmode="url" />
-            </div>
+            <div><label for="pilot-name">Name</label><input id="pilot-name" name="name" autocomplete="name" required /></div>
+            <div><label for="pilot-email">Work email</label><input id="pilot-email" name="email" type="email" autocomplete="email" required /></div>
+            <div><label for="pilot-company">Company / agency</label><input id="pilot-company" name="company" autocomplete="organization" required /></div>
+            <div><label for="pilot-website">Website</label><input id="pilot-website" name="website" type="url" placeholder="https://" inputmode="url" /></div>
             <div>
               <label for="pilot-crm">CRM / sales stack</label>
-              <select id="pilot-crm" name="crm" required>
-                <option value="">Select one</option>
-                <option>GoHighLevel</option>
-                <option>HubSpot</option>
-                <option>Pipedrive</option>
-                <option>Salesforce</option>
-                <option>Other / custom</option>
-                <option>No CRM yet</option>
-              </select>
+              <select id="pilot-crm" name="crm" required><option value="">Select one</option><option>GoHighLevel</option><option>HubSpot</option><option>Pipedrive</option><option>Salesforce</option><option>Other / custom</option><option>No CRM yet</option></select>
             </div>
             <div>
               <label for="pilot-source">Primary lead source</label>
-              <select id="pilot-source" name="lead-source" required>
-                <option value="">Select one</option>
-                <option>Google Ads</option>
-                <option>Meta Ads</option>
-                <option>Website / SEO</option>
-                <option>Outbound</option>
-                <option>Referral</option>
-                <option>Multiple sources</option>
-              </select>
+              <select id="pilot-source" name="lead-source" required><option value="">Select one</option><option>Google Ads</option><option>Meta Ads</option><option>Website / SEO</option><option>Outbound</option><option>Referral</option><option>Multiple sources</option></select>
             </div>
-            <div class="full">
-              <label for="pilot-project">What should happen automatically after a new lead arrives?</label>
-              <textarea id="pilot-project" name="workflow" required placeholder="Example: score the lead, create/update the CRM contact, notify the owner, send SMS/email follow-up and route qualified leads to booking."></textarea>
-            </div>
+            <div class="full"><label for="pilot-project">What should happen automatically after a new lead arrives?</label><textarea id="pilot-project" name="workflow" required placeholder="Example: score the lead, create/update the CRM contact, notify the owner, send SMS/email follow-up and route qualified leads to booking."></textarea></div>
           </div>
-          <button class="submit" type="submit">Request $499 pilot scope</button>
+          <button class="submit" id="pilotSubmit" type="submit">Request $499 pilot scope</button>
           <div class="form-meta">No account is created and no payment is taken here. This form is only used to understand the workflow and reply about a possible implementation.</div>
+          <div class="form-error" id="formError" role="alert"></div>
         </form>
-        <div class="form-success" id="formSuccess">Thanks — the pilot request was submitted. The next step is to review the current stack and identify the smallest workflow worth automating first.</div>
+        <div class="form-success" id="formSuccess">Request received. We'll review your workflow and reply with the smallest useful pilot scope.</div>
       </div>
     </div>
   </section>
@@ -281,27 +247,14 @@ th{color:var(--muted);font-weight:600;background:#0b1627}
     <h2>Talk to LeadStack Ops</h2>
     <p class="lead">Prefer a quick message instead of the pilot form? Reach out on the channel that works best for you.</p>
     <div class="contact-grid">
-      <a class="card contact-card" href="mailto:hello@leadstackops.com">
-        <div class="contact-label">Email</div>
-        <div class="contact-value">hello@leadstackops.com</div>
-        <div class="contact-note">Best for project scope, integrations and partnership details.</div>
-      </a>
-      <div class="card contact-card">
-        <div class="contact-label">WhatsApp</div>
-        <div class="contact-value">@leadstackops</div>
-        <div class="contact-note">Business username only — no personal phone number is displayed.</div>
-      </div>
-      <a class="card contact-card" href="https://t.me/leadstackops" target="_blank" rel="noopener noreferrer">
-        <div class="contact-label">Telegram</div>
-        <div class="contact-value">@leadstackops</div>
-        <div class="contact-note">Open Telegram and message us directly.</div>
-      </a>
+      <a class="card contact-card" href="mailto:hello@leadstackops.com"><div class="contact-label">Email</div><div class="contact-value">hello@leadstackops.com</div><div class="contact-note">Best for project scope, integrations and partnership details.</div></a>
+      <div class="card contact-card"><div class="contact-label">WhatsApp</div><div class="contact-value">@leadstackops</div><div class="contact-note">Business username only — no personal phone number is displayed.</div></div>
+      <a class="card contact-card" href="https://t.me/leadstackops" target="_blank" rel="noopener noreferrer"><div class="contact-label">Telegram</div><div class="contact-value">@leadstackops</div><div class="contact-note">Open Telegram and message us directly.</div></a>
     </div>
   </section>
 
   <footer class="footer">LeadStack Ops · AI Lead Engine demo · Built for global agency partnerships · <a href="mailto:hello@leadstackops.com">hello@leadstackops.com</a> · WhatsApp @leadstackops · <a href="https://t.me/leadstackops" target="_blank" rel="noopener noreferrer">Telegram @leadstackops</a></footer>
 </div>
-
 <script>
 function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
 const params=new URLSearchParams(window.location.search);
@@ -323,19 +276,73 @@ async function runDemo(){
   const badge=document.getElementById('scoreBadge');
   badge.textContent='Processing...'; badge.className='badge warm';
   for(let i=0;i<events.length;i++){
-    events[i].className='event active';
-    await sleep(420);
-    events[i].className='event done';
+    events[i].className='event active'; await sleep(420); events[i].className='event done';
   }
   const cls=score>=85?'hot':score>=65?'warm':'cold';
   const label=score>=85?'HOT':score>=65?'WARM':'COLD';
   badge.textContent=`${label} · ${score}`; badge.className=`badge ${cls}`;
   const name=document.getElementById('name').value || 'New lead';
-  document.getElementById('leadTable').insertAdjacentHTML('afterbegin',
-    `<tr><td>${escapeHtml(name)}</td><td>Demo form</td><td><span class="badge ${cls}">${label} · ${score}</span></td><td>${score>=85?'Sales-ready':'Follow-up'}</td><td>${score>=85?'Book consultation':'Automated sequence'}</td></tr>`);
+  document.getElementById('leadTable').insertAdjacentHTML('afterbegin',`<tr><td>${escapeHtml(name)}</td><td>Demo form</td><td><span class="badge ${cls}">${label} · ${score}</span></td><td>${score>=85?'Sales-ready':'Follow-up'}</td><td>${score>=85?'Book consultation':'Automated sequence'}</td></tr>`);
   document.getElementById('notice').style.display='block';
 }
 function escapeHtml(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+
+const pilotForm=document.getElementById('pilotForm');
+const pilotSubmit=document.getElementById('pilotSubmit');
+const formError=document.getElementById('formError');
+const formSuccess=document.getElementById('formSuccess');
+const englishMessages={
+  'pilot-name':'Please enter your name.',
+  'pilot-email':'Please enter a valid work email.',
+  'pilot-company':'Please enter your company or agency name.',
+  'pilot-crm':'Please select your CRM or sales stack.',
+  'pilot-source':'Please select your primary lead source.',
+  'pilot-project':'Please describe the workflow you want to automate.'
+};
+function validatePilotForm(){
+  const fields=[...pilotForm.querySelectorAll('input,select,textarea')];
+  fields.forEach(field=>field.classList.remove('field-invalid'));
+  formError.style.display='none';
+  for(const field of fields){
+    if(field.name==='company-website'||field.type==='hidden') continue;
+    const value=(field.value||'').trim();
+    let invalid=field.required&&!value;
+    if(!invalid&&field.type==='email'&&value) invalid=!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    if(!invalid&&field.type==='url'&&value){try{new URL(value)}catch{invalid=true}}
+    if(invalid){
+      field.classList.add('field-invalid');
+      const message=englishMessages[field.id]||(field.type==='url'?'Please enter a valid website URL, including https://':'Please complete this field.');
+      formError.textContent=message;
+      formError.style.display='block';
+      field.focus();
+      return false;
+    }
+  }
+  return true;
+}
+pilotForm.addEventListener('submit',async event=>{
+  event.preventDefault();
+  formSuccess.style.display='none';
+  if(!validatePilotForm()) return;
+  pilotSubmit.disabled=true;
+  const originalText=pilotSubmit.textContent;
+  pilotSubmit.textContent='Sending...';
+  try{
+    const data=new FormData(pilotForm);
+    const response=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(data).toString()});
+    if(!response.ok) throw new Error(`Submission failed: ${response.status}`);
+    pilotForm.reset();
+    formError.style.display='none';
+    formSuccess.style.display='block';
+    formSuccess.scrollIntoView({behavior:'smooth',block:'nearest'});
+  }catch(error){
+    formError.textContent='We could not submit your request. Please try again or email hello@leadstackops.com.';
+    formError.style.display='block';
+  }finally{
+    pilotSubmit.disabled=false;
+    pilotSubmit.textContent=originalText;
+  }
+});
 </script>
 </body>
 </html>
