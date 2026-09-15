@@ -53,8 +53,10 @@ input,select,textarea{width:100%;background:#0b1627;border:1px solid var(--line)
 input:focus,select:focus,textarea:focus{border-color:rgba(120,168,255,.72)}
 .field-invalid{border-color:var(--bad)!important;box-shadow:0 0 0 3px rgba(255,123,123,.08)}
 textarea{min-height:78px;resize:vertical}
-.submit{width:100%;margin-top:16px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#06101b}
-.submit:disabled{opacity:.7;cursor:wait}
+.submit{width:100%;margin-top:16px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#06101b;min-height:48px;display:flex;align-items:center;justify-content:center;gap:10px}
+.submit:disabled{opacity:.78;cursor:wait}
+.spinner{width:17px;height:17px;border:2px solid rgba(6,16,27,.28);border-top-color:#06101b;border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 .timeline{margin-top:16px}
 .event{display:grid;grid-template-columns:20px 1fr;gap:10px;padding:9px 0}
 .dot{width:10px;height:10px;border-radius:50%;background:#39506e;margin-top:5px;box-shadow:0 0 0 5px rgba(120,168,255,.06)}
@@ -74,14 +76,24 @@ th{color:var(--muted);font-weight:600;background:#0b1627}
 .partner-note{margin-top:18px;padding:15px 16px;border:1px solid rgba(120,168,255,.28);background:rgba(120,168,255,.06);border-radius:12px;color:#c8daf8;line-height:1.55;font-size:14px}
 .pilot-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:18px;margin-top:22px}
 .pilot-copy,.pilot-form{padding:24px}.pilot-copy h3,.pilot-form h3{margin:0 0 10px}.pilot-copy p{color:var(--muted);line-height:1.65}.pilot-copy ul{margin:18px 0 0;padding-left:18px;color:var(--muted);line-height:1.8}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.form-grid .full{grid-column:1/-1}.pilot-form label{margin-top:0}.pilot-form textarea{min-height:110px}.form-meta{font-size:12px;color:var(--muted);line-height:1.5;margin-top:12px}.form-success{display:none;margin-top:18px;padding:14px 16px;border-radius:12px;background:rgba(102,217,163,.07);border:1px solid rgba(102,217,163,.22);color:#b9efd5;line-height:1.55}.form-error{display:none;margin-top:14px;padding:12px 14px;border-radius:12px;background:rgba(255,123,123,.07);border:1px solid rgba(255,123,123,.25);color:#ffc0c0;line-height:1.5}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.form-grid .full{grid-column:1/-1}.pilot-form label{margin-top:0}.pilot-form textarea{min-height:110px}.form-meta{font-size:12px;color:var(--muted);line-height:1.5;margin-top:12px}.form-error{display:none;margin-top:14px;padding:12px 14px;border-radius:12px;background:rgba(255,123,123,.07);border:1px solid rgba(255,123,123,.25);color:#ffc0c0;line-height:1.5}
+.form-success{display:none;min-height:510px;padding:28px;border-radius:14px;background:radial-gradient(500px 260px at 50% 0%,rgba(102,217,163,.13),transparent 68%),rgba(102,217,163,.035);border:1px solid rgba(102,217,163,.28);align-items:center;justify-content:center;text-align:center;animation:successIn .28s ease-out}
+.form-success.is-visible{display:flex}
+.success-inner{max-width:480px;margin:auto}
+.success-icon{width:72px;height:72px;margin:0 auto 18px;border-radius:50%;display:grid;place-items:center;font-size:34px;font-weight:900;color:#071a13;background:linear-gradient(135deg,#8ff0bf,#55c997);box-shadow:0 0 0 10px rgba(102,217,163,.07),0 18px 44px rgba(0,0,0,.18)}
+.success-eyebrow{font-size:12px;font-weight:800;letter-spacing:.13em;color:#91e7bd;margin-bottom:10px}
+.success-title{font-size:30px;margin:0 0 12px}.success-copy{color:#c5d6e9;line-height:1.65;margin:0 auto}
+.success-next{margin:20px 0 0;padding:16px;text-align:left;border:1px solid rgba(120,168,255,.2);border-radius:12px;background:rgba(120,168,255,.055);color:#cfe0fa;font-size:13px;line-height:1.65}
+.success-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px}.success-actions .btn{font-size:13px;padding:11px 15px}
+.success-reset{margin-top:16px;background:transparent;color:var(--muted);border:0;padding:8px 10px;font-weight:700;cursor:pointer}.success-reset:hover{color:var(--text)}
+@keyframes successIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .hp-field{position:absolute;left:-9999px;opacity:0;pointer-events:none}
 .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
 .contact-card{padding:20px;text-decoration:none;transition:transform .16s ease,border-color .16s ease}.contact-card:hover{transform:translateY(-2px);border-color:rgba(120,168,255,.52)}
 .contact-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.contact-value{font-size:18px;font-weight:800;margin-top:7px}.contact-note{font-size:12px;color:var(--muted);line-height:1.5;margin-top:7px}
 .footer{padding:46px 0 60px;color:var(--muted);font-size:13px}
 .notice{margin-top:18px;padding:12px;border-radius:12px;background:rgba(102,217,163,.07);border:1px solid rgba(102,217,163,.22);color:#b9efd5;display:none}
-@media (max-width:900px){.hero,.demo,.partner-grid,.pilot-grid{grid-template-columns:1fr}.flow{grid-template-columns:repeat(2,1fr)}.grid3,.contact-grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.form-grid .full{grid-column:auto}.hero{padding-top:32px}}
+@media (max-width:900px){.hero,.demo,.partner-grid,.pilot-grid{grid-template-columns:1fr}.flow{grid-template-columns:repeat(2,1fr)}.grid3,.contact-grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.form-grid .full{grid-column:auto}.hero{padding-top:32px}.form-success{min-height:420px;padding:22px}}
 </style>
 </head>
 <body class="notranslate">
@@ -215,7 +227,7 @@ th{color:var(--muted);font-weight:600;background:#0b1627}
         <div class="partner-note">Pilot pricing starts at $499 for a fixed scope. Larger integrations and ongoing agency fulfillment are quoted separately.</div>
       </div>
       <div class="card pilot-form">
-        <h3>Tell us about the workflow</h3>
+        <h3 id="pilotHeading">Tell us about the workflow</h3>
         <form id="pilotForm" name="pilot-request" method="POST" action="/?submitted=1#pilot-request" data-netlify="true" netlify-honeypot="company-website" novalidate>
           <input type="hidden" name="form-name" value="pilot-request" />
           <p class="hp-field"><label>Leave this field empty <input name="company-website" autocomplete="off" tabindex="-1" /></label></p>
@@ -238,7 +250,20 @@ th{color:var(--muted);font-weight:600;background:#0b1627}
           <div class="form-meta">No account is created and no payment is taken here. This form is only used to understand the workflow and reply about a possible implementation.</div>
           <div class="form-error" id="formError" role="alert"></div>
         </form>
-        <div class="form-success" id="formSuccess">Request received. We'll review your workflow and reply with the smallest useful pilot scope.</div>
+        <div class="form-success" id="formSuccess" role="status" aria-live="polite" tabindex="-1">
+          <div class="success-inner">
+            <div class="success-icon">✓</div>
+            <div class="success-eyebrow">REQUEST RECEIVED</div>
+            <h3 class="success-title">You're all set.</h3>
+            <p class="success-copy" id="successMessage">Your workflow has been sent to LeadStack Ops.</p>
+            <div class="success-next"><strong>What happens next:</strong><br>We'll review your stack and workflow, identify the smallest useful pilot scope, and reply to your work email with the recommended next step.</div>
+            <div class="success-actions">
+              <a class="btn secondary" href="mailto:hello@leadstackops.com">Email LeadStack Ops</a>
+              <a class="btn secondary" href="https://t.me/leadstackops" target="_blank" rel="noopener noreferrer">Message on Telegram</a>
+            </div>
+            <button class="success-reset" id="newRequest" type="button">Submit another request</button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -258,10 +283,6 @@ th{color:var(--muted);font-weight:600;background:#0b1627}
 <script>
 function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
 const params=new URLSearchParams(window.location.search);
-if(params.get('submitted')==='1'){
-  const success=document.getElementById('formSuccess');
-  if(success) success.style.display='block';
-}
 async function runDemo(){
   const events=[...document.querySelectorAll('.event')];
   events.forEach(e=>e.className='event');
@@ -285,12 +306,15 @@ async function runDemo(){
   document.getElementById('leadTable').insertAdjacentHTML('afterbegin',`<tr><td>${escapeHtml(name)}</td><td>Demo form</td><td><span class="badge ${cls}">${label} · ${score}</span></td><td>${score>=85?'Sales-ready':'Follow-up'}</td><td>${score>=85?'Book consultation':'Automated sequence'}</td></tr>`);
   document.getElementById('notice').style.display='block';
 }
-function escapeHtml(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function escapeHtml(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#039;'}[m]))}
 
 const pilotForm=document.getElementById('pilotForm');
 const pilotSubmit=document.getElementById('pilotSubmit');
 const formError=document.getElementById('formError');
 const formSuccess=document.getElementById('formSuccess');
+const successMessage=document.getElementById('successMessage');
+const newRequest=document.getElementById('newRequest');
+const pilotHeading=document.getElementById('pilotHeading');
 const englishMessages={
   'pilot-name':'Please enter your name.',
   'pilot-email':'Please enter a valid work email.',
@@ -320,27 +344,48 @@ function validatePilotForm(){
   }
   return true;
 }
+function showSuccess(name,email){
+  pilotForm.style.display='none';
+  pilotHeading.style.display='none';
+  const firstName=(name||'').trim().split(/\s+/)[0];
+  successMessage.textContent=`Thanks${firstName?`, ${firstName}`:''}. We received your workflow request${email?` and will reply to ${email}`:''}.`;
+  formSuccess.classList.add('is-visible');
+  formSuccess.focus({preventScroll:true});
+  formSuccess.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function resetPilotForm(){
+  formSuccess.classList.remove('is-visible');
+  pilotHeading.style.display='block';
+  pilotForm.style.display='block';
+  pilotForm.reset();
+  formError.style.display='none';
+  pilotSubmit.disabled=false;
+  pilotSubmit.textContent='Request $499 pilot scope';
+  const first=pilotForm.querySelector('input:not([type="hidden"])');
+  if(first) first.focus();
+}
+if(params.get('submitted')==='1') showSuccess('','');
+newRequest.addEventListener('click',resetPilotForm);
 pilotForm.addEventListener('submit',async event=>{
   event.preventDefault();
-  formSuccess.style.display='none';
+  formSuccess.classList.remove('is-visible');
   if(!validatePilotForm()) return;
+  const submittedName=document.getElementById('pilot-name').value;
+  const submittedEmail=document.getElementById('pilot-email').value;
   pilotSubmit.disabled=true;
-  const originalText=pilotSubmit.textContent;
-  pilotSubmit.textContent='Sending...';
+  pilotSubmit.innerHTML='<span class="spinner" aria-hidden="true"></span><span>Sending request...</span>';
   try{
     const data=new FormData(pilotForm);
     const response=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(data).toString()});
     if(!response.ok) throw new Error(`Submission failed: ${response.status}`);
-    pilotForm.reset();
     formError.style.display='none';
-    formSuccess.style.display='block';
-    formSuccess.scrollIntoView({behavior:'smooth',block:'nearest'});
+    showSuccess(submittedName,submittedEmail);
+    pilotForm.reset();
   }catch(error){
     formError.textContent='We could not submit your request. Please try again or email hello@leadstackops.com.';
     formError.style.display='block';
-  }finally{
     pilotSubmit.disabled=false;
-    pilotSubmit.textContent=originalText;
+    pilotSubmit.textContent='Request $499 pilot scope';
   }
 });
 </script>
