@@ -64,9 +64,13 @@ th{color:var(--muted);font-weight:600;background:#0b1627}
 .hot{color:#ff9c9c;background:rgba(255,123,123,.08)} .warm{color:#ffd166;background:rgba(255,209,102,.08)} .cold{color:#8bb6ff;background:rgba(120,168,255,.08)}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
 .feature{padding:20px}.feature h3{margin:0 0 8px}.feature p{color:var(--muted);line-height:1.5;font-size:14px}
+.partner-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+.partner-card{padding:24px}.partner-card h3{margin:0 0 12px}.partner-card ul{margin:0;padding-left:18px;color:var(--muted);line-height:1.8}
+.stack{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.stack span{padding:7px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:12px;background:rgba(255,255,255,.02)}
+.partner-note{margin-top:18px;padding:15px 16px;border:1px solid rgba(120,168,255,.28);background:rgba(120,168,255,.06);border-radius:12px;color:#c8daf8;line-height:1.55;font-size:14px}
 .footer{padding:46px 0 60px;color:var(--muted);font-size:13px}
 .notice{margin-top:18px;padding:12px;border-radius:12px;background:rgba(102,217,163,.07);border:1px solid rgba(102,217,163,.22);color:#b9efd5;display:none}
-@media (max-width:900px){.hero,.demo{grid-template-columns:1fr}.flow{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:1fr}.hero{padding-top:32px}}
+@media (max-width:900px){.hero,.demo,.partner-grid{grid-template-columns:1fr}.flow{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:1fr}.hero{padding-top:32px}}
 </style>
 </head>
 <body>
@@ -83,17 +87,17 @@ th{color:var(--muted);font-weight:600;background:#0b1627}
       <p class="sub">Capture inbound leads, qualify them with AI, route them into CRM, trigger instant follow-up, book calls and expose the whole funnel in one client-facing dashboard.</p>
       <div class="btns">
         <a class="btn primary" href="#demo">Run the demo</a>
-        <a class="btn secondary" href="#workflow">See the workflow</a>
+        <a class="btn secondary" href="#agency">For agencies</a>
       </div>
     </div>
     <div class="card hero-card">
       <div class="kpi-grid">
-        <div class="kpi"><div class="v">31 sec</div><div class="l">Lead → first response</div></div>
-        <div class="kpi"><div class="v">84%</div><div class="l">Automated qualification</div></div>
-        <div class="kpi"><div class="v">12</div><div class="l">Booked appointments</div></div>
-        <div class="kpi"><div class="v">4.7×</div><div class="l">Pipeline visibility</div></div>
+        <div class="kpi"><div class="v">&lt;60 sec</div><div class="l">Target first-response window</div></div>
+        <div class="kpi"><div class="v">3-tier</div><div class="l">Hot / warm / cold qualification</div></div>
+        <div class="kpi"><div class="v">6-step</div><div class="l">Automated conversion workflow</div></div>
+        <div class="kpi"><div class="v">1 view</div><div class="l">Lead-to-booking visibility</div></div>
       </div>
-      <p style="color:var(--muted);font-size:13px;margin:16px 2px 0">Illustrative demo metrics. Production implementations connect to the client's actual CRM, forms, calendars and messaging stack.</p>
+      <p style="color:var(--muted);font-size:13px;margin:16px 2px 0">Demo configuration only. Production implementations connect to the client's actual CRM, forms, calendars and messaging stack.</p>
     </div>
   </section>
 
@@ -154,20 +158,45 @@ th{color:var(--muted);font-weight:600;background:#0b1627}
     </div>
   </section>
 
-  <section class="section">
-    <h2>Built for white-label delivery</h2>
+  <section class="section" id="agency">
+    <h2>Built for white-label agency delivery</h2>
+    <p class="lead">Keep the client relationship and strategy. Use this system as the technical delivery layer behind your existing lead-gen, paid-media, CRM or retention offer.</p>
     <div class="grid3">
-      <div class="card feature"><h3>Agency-ready</h3><p>Your brand, your client, your offer. The automation layer can sit invisibly behind an agency's existing marketing services.</p></div>
-      <div class="card feature"><h3>Custom integrations</h3><p>Forms, CRMs, APIs, webhooks, databases, calendars, email, messaging and internal admin tools can be connected around the same flow.</p></div>
-      <div class="card feature"><h3>Recurring revenue</h3><p>Implementation fee + monthly monitoring/maintenance + optional workflow expansion creates a repeatable service rather than one-off dev work.</p></div>
+      <div class="card feature"><h3>Your brand stays front and center</h3><p>The workflow can run under your agency's offer, terminology and client-facing process. No need to introduce another vendor to the client.</p></div>
+      <div class="card feature"><h3>Custom engineering when templates stop</h3><p>APIs, webhooks, CRM logic, dashboards, databases, booking flows and internal tools can be connected around the client's current stack.</p></div>
+      <div class="card feature"><h3>Repeatable recurring delivery</h3><p>Start with one workflow, then reuse the core architecture across similar accounts with monitoring, maintenance and expansion as recurring work.</p></div>
     </div>
+
+    <div class="partner-grid">
+      <div class="card partner-card">
+        <h3>What your client sees</h3>
+        <ul>
+          <li>Faster lead response and cleaner qualification</li>
+          <li>Consistent CRM stages, ownership and follow-up</li>
+          <li>Booking handoff and pipeline visibility</li>
+          <li>A workflow aligned to the agency's existing service</li>
+        </ul>
+      </div>
+      <div class="card partner-card">
+        <h3>What we handle behind the scenes</h3>
+        <ul>
+          <li>Workflow architecture, APIs and webhook integrations</li>
+          <li>AI qualification logic and routing rules</li>
+          <li>Error handling, logging and handoff documentation</li>
+          <li>Custom front-end/admin views when off-the-shelf tools fall short</li>
+        </ul>
+        <div class="stack"><span>HubSpot</span><span>GoHighLevel</span><span>n8n</span><span>Make</span><span>APIs</span><span>Webhooks</span></div>
+      </div>
+    </div>
+    <div class="partner-note">Designed as a technical partner model: the agency owns the client, pricing and strategy; the automation layer is implemented to fit the existing delivery stack.</div>
   </section>
 
-  <section class="section">
+  <section class="section" id="pilot">
     <div class="card" style="padding:28px">
-      <h2 style="margin-top:0">A practical pilot offer</h2>
-      <p class="lead">Start with one workflow for one client. Map the process, connect the stack, build logging and error handling, document the handoff, then decide whether to roll it out across more accounts.</p>
-      <div class="btns"><a class="btn primary" href="mailto:wle1512619494@gmail.com?subject=AI%20Lead%20Engine%20pilot">Discuss a pilot</a></div>
+      <h2 style="margin-top:0">Start with one contained pilot</h2>
+      <p class="lead">Pick one real client workflow. Map the current process, connect the stack, add qualification/routing, build logging and error handling, document the handoff, then decide whether the system is worth rolling out to more accounts.</p>
+      <div class="partner-note" style="margin-top:20px">If this demo was shared with you by email, reply to that email with the CRM and lead source you use. A workflow map can be scoped around your existing stack before any build starts.</div>
+      <div class="btns"><a class="btn primary" href="#demo">Run the lead demo</a><a class="btn secondary" href="#agency">Review agency delivery model</a></div>
     </div>
   </section>
 
