@@ -68,9 +68,13 @@ th{color:var(--muted);font-weight:600;background:#0b1627}
 .partner-card{padding:24px}.partner-card h3{margin:0 0 12px}.partner-card ul{margin:0;padding-left:18px;color:var(--muted);line-height:1.8}
 .stack{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.stack span{padding:7px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:12px;background:rgba(255,255,255,.02)}
 .partner-note{margin-top:18px;padding:15px 16px;border:1px solid rgba(120,168,255,.28);background:rgba(120,168,255,.06);border-radius:12px;color:#c8daf8;line-height:1.55;font-size:14px}
+.pilot-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:18px;margin-top:22px}
+.pilot-copy,.pilot-form{padding:24px}.pilot-copy h3,.pilot-form h3{margin:0 0 10px}.pilot-copy p{color:var(--muted);line-height:1.65}.pilot-copy ul{margin:18px 0 0;padding-left:18px;color:var(--muted);line-height:1.8}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.form-grid .full{grid-column:1/-1}.pilot-form label{margin-top:0}.pilot-form textarea{min-height:110px}.form-meta{font-size:12px;color:var(--muted);line-height:1.5;margin-top:12px}.form-success{display:none;margin-top:18px;padding:14px 16px;border-radius:12px;background:rgba(102,217,163,.07);border:1px solid rgba(102,217,163,.22);color:#b9efd5;line-height:1.55}
+.hp-field{position:absolute;left:-9999px;opacity:0;pointer-events:none}
 .footer{padding:46px 0 60px;color:var(--muted);font-size:13px}
 .notice{margin-top:18px;padding:12px;border-radius:12px;background:rgba(102,217,163,.07);border:1px solid rgba(102,217,163,.22);color:#b9efd5;display:none}
-@media (max-width:900px){.hero,.demo,.partner-grid{grid-template-columns:1fr}.flow{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:1fr}.hero{padding-top:32px}}
+@media (max-width:900px){.hero,.demo,.partner-grid,.pilot-grid{grid-template-columns:1fr}.flow{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.form-grid .full{grid-column:auto}.hero{padding-top:32px}}
 </style>
 </head>
 <body>
@@ -191,12 +195,81 @@ th{color:var(--muted);font-weight:600;background:#0b1627}
     <div class="partner-note">Designed as a technical partner model: the agency owns the client, pricing and strategy; the automation layer is implemented to fit the existing delivery stack.</div>
   </section>
 
-  <section class="section" id="pilot">
-    <div class="card" style="padding:28px">
-      <h2 style="margin-top:0">Start with one contained pilot</h2>
-      <p class="lead">Pick one real client workflow. Map the current process, connect the stack, add qualification/routing, build logging and error handling, document the handoff, then decide whether the system is worth rolling out to more accounts.</p>
-      <div class="partner-note" style="margin-top:20px">If this demo was shared with you by email, reply to that email with the CRM and lead source you use. A workflow map can be scoped around your existing stack before any build starts.</div>
-      <div class="btns"><a class="btn primary" href="#demo">Run the lead demo</a><a class="btn secondary" href="#agency">Review agency delivery model</a></div>
+  <section class="section" id="pilot-request">
+    <h2>Request a pilot workflow map</h2>
+    <p class="lead">Share the stack you already use and the handoff that is breaking. The first step is a small, scoped workflow — not a platform migration.</p>
+
+    <div class="pilot-grid">
+      <div class="card pilot-copy">
+        <h3>What happens next</h3>
+        <p>The request is reviewed against your current lead source, CRM and booking process. If there is a sensible automation fit, the pilot is scoped around one concrete workflow.</p>
+        <ul>
+          <li>One lead source or intake path</li>
+          <li>One CRM / pipeline handoff</li>
+          <li>Qualification, routing and follow-up logic</li>
+          <li>Logging, error handling and handoff notes</li>
+        </ul>
+        <div class="partner-note">Agency partners can keep the client relationship, branding and commercial terms. This form is for scoping the technical delivery layer.</div>
+      </div>
+
+      <div class="card pilot-form">
+        <h3>Tell us about the workflow</h3>
+        <form name="pilot-request" method="POST" action="/?submitted=1#pilot-request" data-netlify="true" netlify-honeypot="company-website">
+          <input type="hidden" name="form-name" value="pilot-request" />
+          <p class="hp-field">
+            <label>Leave this field empty <input name="company-website" autocomplete="off" tabindex="-1" /></label>
+          </p>
+          <div class="form-grid">
+            <div>
+              <label for="pilot-name">Name</label>
+              <input id="pilot-name" name="name" autocomplete="name" required />
+            </div>
+            <div>
+              <label for="pilot-email">Work email</label>
+              <input id="pilot-email" name="email" type="email" autocomplete="email" required />
+            </div>
+            <div>
+              <label for="pilot-company">Company / agency</label>
+              <input id="pilot-company" name="company" autocomplete="organization" required />
+            </div>
+            <div>
+              <label for="pilot-website">Website</label>
+              <input id="pilot-website" name="website" type="url" placeholder="https://" inputmode="url" />
+            </div>
+            <div>
+              <label for="pilot-crm">CRM / sales stack</label>
+              <select id="pilot-crm" name="crm" required>
+                <option value="">Select one</option>
+                <option>GoHighLevel</option>
+                <option>HubSpot</option>
+                <option>Pipedrive</option>
+                <option>Salesforce</option>
+                <option>Other / custom</option>
+                <option>No CRM yet</option>
+              </select>
+            </div>
+            <div>
+              <label for="pilot-source">Primary lead source</label>
+              <select id="pilot-source" name="lead-source" required>
+                <option value="">Select one</option>
+                <option>Google Ads</option>
+                <option>Meta Ads</option>
+                <option>Website / SEO</option>
+                <option>Outbound</option>
+                <option>Referral</option>
+                <option>Multiple sources</option>
+              </select>
+            </div>
+            <div class="full">
+              <label for="pilot-project">What should happen automatically after a new lead arrives?</label>
+              <textarea id="pilot-project" name="workflow" required placeholder="Example: score the lead, create/update the CRM contact, notify the owner, send SMS/email follow-up and route qualified leads to booking."></textarea>
+            </div>
+          </div>
+          <button class="submit" type="submit">Request pilot scope</button>
+          <div class="form-meta">No account is created and no payment is taken here. This form is only used to understand the workflow and reply about a possible implementation.</div>
+        </form>
+        <div class="form-success" id="formSuccess">Thanks — the pilot request was submitted. The next step is to review the current stack and identify the smallest workflow worth automating first.</div>
+      </div>
     </div>
   </section>
 
@@ -205,6 +278,11 @@ th{color:var(--muted);font-weight:600;background:#0b1627}
 
 <script>
 function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
+const params=new URLSearchParams(window.location.search);
+if(params.get('submitted')==='1'){
+  const success=document.getElementById('formSuccess');
+  if(success) success.style.display='block';
+}
 async function runDemo(){
   const events=[...document.querySelectorAll('.event')];
   events.forEach(e=>e.className='event');
