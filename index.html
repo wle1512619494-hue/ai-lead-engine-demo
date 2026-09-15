@@ -72,9 +72,12 @@ th{color:var(--muted);font-weight:600;background:#0b1627}
 .pilot-copy,.pilot-form{padding:24px}.pilot-copy h3,.pilot-form h3{margin:0 0 10px}.pilot-copy p{color:var(--muted);line-height:1.65}.pilot-copy ul{margin:18px 0 0;padding-left:18px;color:var(--muted);line-height:1.8}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.form-grid .full{grid-column:1/-1}.pilot-form label{margin-top:0}.pilot-form textarea{min-height:110px}.form-meta{font-size:12px;color:var(--muted);line-height:1.5;margin-top:12px}.form-success{display:none;margin-top:18px;padding:14px 16px;border-radius:12px;background:rgba(102,217,163,.07);border:1px solid rgba(102,217,163,.22);color:#b9efd5;line-height:1.55}
 .hp-field{position:absolute;left:-9999px;opacity:0;pointer-events:none}
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.contact-card{padding:20px;text-decoration:none;transition:transform .16s ease,border-color .16s ease}.contact-card:hover{transform:translateY(-2px);border-color:rgba(120,168,255,.52)}
+.contact-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.contact-value{font-size:18px;font-weight:800;margin-top:7px}.contact-note{font-size:12px;color:var(--muted);line-height:1.5;margin-top:7px}
 .footer{padding:46px 0 60px;color:var(--muted);font-size:13px}
 .notice{margin-top:18px;padding:12px;border-radius:12px;background:rgba(102,217,163,.07);border:1px solid rgba(102,217,163,.22);color:#b9efd5;display:none}
-@media (max-width:900px){.hero,.demo,.partner-grid,.pilot-grid{grid-template-columns:1fr}.flow{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.form-grid .full{grid-column:auto}.hero{padding-top:32px}}
+@media (max-width:900px){.hero,.demo,.partner-grid,.pilot-grid{grid-template-columns:1fr}.flow{grid-template-columns:repeat(2,1fr)}.grid3,.contact-grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.form-grid .full{grid-column:auto}.hero{padding-top:32px}}
 </style>
 </head>
 <body>
@@ -274,7 +277,29 @@ th{color:var(--muted);font-weight:600;background:#0b1627}
     </div>
   </section>
 
-  <footer class="footer">LeadStack Ops · AI Lead Engine demo · Built for global agency partnerships · <a href="mailto:hello@leadstackops.com">hello@leadstackops.com</a></footer>
+  <section class="section" id="contact">
+    <h2>Talk to LeadStack Ops</h2>
+    <p class="lead">Prefer a quick message instead of the pilot form? Reach out on the channel that works best for you.</p>
+    <div class="contact-grid">
+      <a class="card contact-card" href="mailto:hello@leadstackops.com">
+        <div class="contact-label">Email</div>
+        <div class="contact-value">hello@leadstackops.com</div>
+        <div class="contact-note">Best for project scope, integrations and partnership details.</div>
+      </a>
+      <div class="card contact-card">
+        <div class="contact-label">WhatsApp</div>
+        <div class="contact-value">@leadstackops</div>
+        <div class="contact-note">Business username only — no personal phone number is displayed.</div>
+      </div>
+      <a class="card contact-card" href="https://t.me/leadstackops" target="_blank" rel="noopener noreferrer">
+        <div class="contact-label">Telegram</div>
+        <div class="contact-value">@leadstackops</div>
+        <div class="contact-note">Open Telegram and message us directly.</div>
+      </a>
+    </div>
+  </section>
+
+  <footer class="footer">LeadStack Ops · AI Lead Engine demo · Built for global agency partnerships · <a href="mailto:hello@leadstackops.com">hello@leadstackops.com</a> · WhatsApp @leadstackops · <a href="https://t.me/leadstackops" target="_blank" rel="noopener noreferrer">Telegram @leadstackops</a></footer>
 </div>
 
 <script>
